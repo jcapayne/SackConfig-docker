@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  nsnWEB:
+     image: nameservernet:${TAG:-latest}
+     build: .
+     networks:
+       - public
+     restart: on-failure
+     volumes:
+       - ./volumes/web:/usr/share/nginx/html
+     environment: 
+       - NSN_SERVICE=web
+     ports:
+       - "80:80"
+       - "443:443"
+
+  nsnDNS:
+     image: nameservernet:${TAG:-latest}
+     networks:
+       - public
+       - private
+     restart: on-failure
+     volumes:
+       - sackdns:/etc/bind/SackConfig
+     environment: 
+        - NSN_SERVICE=dns
+     ports:
+       - "53:53"
+       - "953:953"
+
+  nsnCRON:
+     image: nameservernet:${TAG:-latest}
+     networks:
+       - public
+       - private
+     links: 
+       - nsnDNS
+     restart: on-failure
+     environment: 
+       - NSN_SERVICE=cron
+     volumes:
+       - sackdns:/etc/bind/SackConfig
+       - ./volumes/web:/usr/share/nginx/html
+       - ./volumes/sack.conf:/SackConfig/sack.conf
+
+volumes:
+   sackdns:
+
+networks:
+  public:
+    driver: bridge
+    #enable_ipv6: true
+  private:
+    driver: bridge
+    #enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.2.0/24
+        - subnet: fdda:0448:7e50:1263::/64

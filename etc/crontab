@@ -1,0 +1,1 @@
+*/30 * * * * sleep $(expr $RANDOM \% 300) ; cd /SackConfig && ./generate.sh
