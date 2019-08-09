@@ -1,1 +1,2 @@
 */30 * * * * sleep $(expr $RANDOM \% 300) ; cd /SackConfig && ./generate.sh
+0 0 * * * cd /SackConfig && ./run-undelegated.sh
