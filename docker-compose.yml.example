@@ -12,8 +12,8 @@ services:
      environment: 
        - NSN_SERVICE=web
      ports:
-       - "80:80"
-       - "443:443"
+             - "${MYIP}:80:80"
+             - "${MYIP}:443:443"
 
   nsnDNS:
      image: nameservernet:${TAG:-latest}
@@ -23,11 +23,14 @@ services:
      restart: on-failure
      volumes:
        - sackdns:/etc/bind/SackConfig
+       - ./volumes/dns:/etc/bind/primary
+       - ./volumes/dns-secondary:/etc/bind/secondary
      environment: 
         - NSN_SERVICE=dns
      ports:
-       - "53:53"
-       - "953:953"
+             - "${MYIP}:53:53/udp"
+             - "${MYIP}:53:53"
+             - "${MYIP}:953:953"
 
   nsnCRON:
      image: nameservernet:${TAG:-latest}
