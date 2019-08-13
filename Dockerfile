@@ -23,6 +23,7 @@ ADD bin/docker-entrypoint.sh /docker-entrypoint.sh
 ADD etc/named.conf /etc/bind/
 ADD etc/nginx.conf /etc/nginx/
 ADD etc/crontab /etc/cron.d/sackfigurator
+RUN chmod 644 /etc/cron.d/sackfigurator
 RUN touch /var/log/cron.log
 RUN mkdir /etc/bind/SackConfig
 RUN ln -s /etc/bind/SackConfig/sackdns.conf /etc/bind/sackdns.conf
