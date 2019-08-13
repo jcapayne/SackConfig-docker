@@ -23,7 +23,7 @@ elif [ "$NSN_SERVICE" = "cron" ]; then
   fi
   echo "Generating sackdns.conf"
   /SackConfig/generate.sh
-  /usr/sbin/cron && tail -f /var/log/cron.log
+  /usr/sbin/cron -f && tail -f /var/log/cron.log
 elif [ "$NSN_SERVICE" = "dns" ]; then
   if [ ! -e /etc/bind/sackdns.conf ]; then
     touch /etc/bind/sackdns.conf
