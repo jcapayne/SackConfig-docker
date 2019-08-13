@@ -12,8 +12,9 @@ RUN apt-get update && \
             unzip \
             libnet-dns-perl \
             libwww-perl 
-# RUN rm -rf /var/lib/apt/lists/*
+RUN rm -rf /var/lib/apt/lists/*
 
+ADD etc/latest-git /latest-git
 RUN /usr/bin/curl -L -o /tmp/sackconfig.zip https://github.com/jcapayne/SackConfig/archive/master.zip && \ 
     /usr/bin/unzip /tmp/sackconfig.zip && \ 
     ln -s /SackConfig-master /SackConfig
@@ -26,6 +27,7 @@ RUN touch /var/log/cron.log
 RUN mkdir /etc/bind/SackConfig
 RUN ln -s /etc/bind/SackConfig/sackdns.conf /etc/bind/sackdns.conf
 ADD bin/generate.sh /SackConfig
+ADD bin/run-undelegated.sh /SackConfig
 
 # expose port 80 if web container
 # volume mount:

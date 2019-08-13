@@ -1,5 +1,6 @@
 volumes/sack.conf
 volumes/web/*.conf
+volumes/web/undelegated.html
 volumes/dns
 volumes/dns-secondary
 docker-compose.yml
