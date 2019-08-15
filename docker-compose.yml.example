@@ -46,6 +46,7 @@ services:
        - sackdns:/etc/bind/SackConfig
        - ./volumes/web:/usr/share/nginx/html
        - ./volumes/sack.conf:/SackConfig/sack.conf
+       - ./volumes/sack.conf.d:/SackConfig/sack.conf.d
 
 volumes:
    sackdns:

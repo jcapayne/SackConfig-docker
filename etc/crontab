@@ -1,3 +1,4 @@
-*/30 * * * * root sleep $(expr $RANDOM \% 300) ; cd /SackConfig && ./generate.sh >> /var/log/cron.log
-0 0 * * * root cd /SackConfig && ./run-undelegated.sh >> /var/log/cron.log
+*/30 * * * * root sleep $(expr $RANDOM \% 300) ; cd /SackConfig && ./generate.sh
+*/30 * * * * root sleep $(expr $RANDOM \% 300) ; cd /SackConfig && ./run-alternate-configs.sh
+0 0 * * * root cd /SackConfig && ./run-undelegated.sh
 
