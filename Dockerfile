@@ -29,7 +29,7 @@ RUN mkdir /etc/bind/SackConfig
 RUN ln -s /etc/bind/SackConfig/sackdns.conf /etc/bind/sackdns.conf
 ADD bin/generate.sh /SackConfig
 ADD bin/run-undelegated.sh /SackConfig
-ADD bin/run-alternative-configs.sh /SackConfig
+ADD bin/run-alternate-configs.sh /SackConfig
 RUN chmod 755 /SackConfig/*.sh
 
 # expose port 80 if web container
