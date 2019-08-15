@@ -1,4 +1,4 @@
-# this file has the local "global" config
+    # this file has the local "global" config
 # 
  
 # associate top-level keywords with syntax modules
@@ -19,7 +19,7 @@ remotedir /tmp/sackfigurator-iad/
 localname iad.nameserver.net
 
 # local config details, these options are passed to the associated modules
-local dns rootdir /usr/share/nginx/html
+local dns rootdir /usr/share/nginx/html/
 local dns configfile sackdns-iad.conf
 local dns primarydir primary/
 local dns secondarydir secondary/
