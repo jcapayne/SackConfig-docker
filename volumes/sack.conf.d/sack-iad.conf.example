@@ -16,7 +16,7 @@ defaultmodules host
 remotedir /tmp/sackfigurator-iad/
 
 # this machine
-localname nyc.nameserver.net
+localname iad.nameserver.net
 
 # local config details, these options are passed to the associated modules
 local dns rootdir /usr/share/nginx/html
